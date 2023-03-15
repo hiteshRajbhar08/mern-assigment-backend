@@ -3,6 +3,7 @@ require('dotenv').config();
 require('colors');
 const cors = require('cors');
 const connectDB = require('./config/db');
+const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
 
 // connect database
 connectDB();
@@ -23,6 +24,10 @@ app.use('/api/products', productRoutes);
 app.get('/', (req, res) => {
   res.send('API is running....');
 });
+
+// error middlewares
+app.use(notFound);
+app.use(errorHandler);
 
 // listen to server
 const PORT = process.env.PORT || 5000;
