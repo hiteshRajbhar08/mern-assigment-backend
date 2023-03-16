@@ -29,6 +29,10 @@ app.get('/', (req, res) => {
   res.send('API is running....');
 });
 
+app.get('/api/config/paypal', (req, res) => {
+  res.send(process.env.CLIENT_ID);
+});
+
 // error middlewares
 app.use(notFound);
 app.use(errorHandler);
