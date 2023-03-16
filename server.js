@@ -11,6 +11,7 @@ connectDB();
 // routes
 const productRoutes = require('./routes/ProductRoute');
 const orderRoutes = require('./routes/orderRoute');
+const userRoutes = require('./routes/userRoute');
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cors());
 // routes middleware
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running....');
